@@ -1,0 +1,16 @@
+#! /usr/local/bin/bash
+#
+#BSUB -J A345       # job name
+#BSUB -P 22100000   # NCAR project account number
+#
+#BSUB -q debug    # queue name
+###BSUB -a poe
+###BSUB -x
+#BSUB -n 8
+#BSUB -R "span[ptile=8]"
+#BSUB -o out
+#BSUB -e err
+#BSUB -W 0:30
+
+##export TARGET_CPU_LIST="-1"
+mpirun.lsf /usr/local/bin/launch ./a.out

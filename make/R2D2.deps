@@ -1,0 +1,24 @@
+### This is auto-generated file. DO NOT EDIT
+yinyang_init.o: geometry_def.o const_def.o yinyang_def.o comm_def.o implicit_def.o
+time_def.o: 
+comm_init.o: implicit_def.o geometry_def.o comm_def.o yinyang_def.o
+remap_def.o: geometry_def.o
+star_def.o: 
+yinyang_def.o: geometry_def.o
+background_def.o: const_def.o geometry_def.o
+main.o: comm_def.o remap_def.o geometry_def.o mhd_def.o remap_def.o time_def.o implicit_def.o
+geometry_init.o: const_def.o geometry_def.o geometry_def.o mhd_def.o comm_def.o implicit_def.o
+finish.o: implicit_def.o comm_def.o
+const_def.o: 
+remap_yinyang.o: const_def.o geometry_def.o time_def.o implicit_def.o remap_def.o comm_def.o mhd_def.o
+remap_calc.o: geometry_def.o time_def.o const_def.o const_def.o remap_def.o remap_def.o remap_def.o comm_def.o background_def.o implicit_def.o
+io_def.o: 
+comm_def.o: geometry_def.o
+io_init.o: geometry_def.o comm_def.o io_def.o implicit_def.o
+geometry_def.o: star_def.o const_def.o
+remap.o: const_def.o geometry_def.o implicit_def.o comm_def.o mhd_def.o remap_def.o
+implicit_def.o: 
+remap_init.o: const_def.o geometry_def.o implicit_def.o comm_def.o remap_def.o
+remap_yinyang_init.o: const_def.o geometry_def.o yinyang_def.o implicit_def.o remap_def.o comm_def.o
+io.o: const_def.o const_def.o geometry_def.o implicit_def.o io_def.o remap_def.o remap_def.o comm_def.o time_def.o mhd_def.o yinyang_def.o
+mhd_def.o: geometry_def.o

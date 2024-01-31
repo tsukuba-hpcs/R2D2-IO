@@ -1,0 +1,34 @@
+#!/bin/sh
+NAME=d151   # job name
+NODE=128    # number of node
+MODE=4      # number of MPI rank in a node
+TIME=40     # elapsed time
+OUT=log.txt # output file
+
+if [ ! -d data ]; then
+    mkdir data
+    mkdir data/time
+    mkdir data/qq
+    mkdir data/param
+    mkdir data/remap
+fi
+if [ ! -e ${OUT}.output ]; then
+#rm -f ${OUT}.output
+    touch ${OUT}.output
+fi
+
+SCRIPT=myjob.sh
+echo -e "#!/bin/sh" > ${SCRIPT}
+echo -e echo Starting Cobalt job script >> ${SCRIPT}
+MPI=`expr $NODE \* $MODE`
+echo -e runjob --np ${MPI} -p ${MODE} --block '$COBALT_PARTNAME' : ./a.out test >> ${SCRIPT}
+chmod +x ${SCRIPT}
+
+if [ $# -eq 0 ]; then
+    qsub -t ${TIME} -n ${NODE} -O ${OUT} --jobname ${NAME} --mode script /soft/debuggers/scripts/bin/nofail ./myjob.sh
+fi
+
+if [ $# -eq 1 ]; then
+qsub -t ${TIME} -n ${NODE} -O ${OUT} --jobname ${NAME} --dependencies ${1} --mode script /soft/debuggers/scripts/bin/nofail ./myjob.sh
+fi
+

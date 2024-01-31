@@ -1,0 +1,14 @@
+*.o*
+*.e*
+log.txt
+log.txt.*
+out.txt
+err.txt
+*.stats
+a.out
+*.mod
+*.lst
+fort.10
+output.*/
+data
+make/update
